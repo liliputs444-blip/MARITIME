@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maritime Programs | Rosemont Hills Montessori College</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR (DEFAULT - TOP) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* NAVBAR WHEN SCROLLED */
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 10px 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* LOGO SHRINK EFFECT */
+.navbar.scrolled .logo-img {
+    width: 40px;
+    height: 40px;
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    animation: fadeInLogo 1s ease;
+}
+
+.logo-text {
+    color: white;
+    font-weight: bold;
+}
+
+/* NAV LINKS */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f59f00;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+        url('ho.png') no-repeat center/cover;
+    animation: zoomHero 12s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
+    background: rgba(0,0,0,0.6);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+}
+
+.hero-content span {
+    color: #f59f00;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #f59f00;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #d97706;
+}
+
+/* PROGRAM SECTION */
+.programs {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #0a192f, #112240);
+}
+
+/* CONTAINER */
+.program-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* NEW CARD STYLE */
+.program-card.unique {
+    width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: 0.4s;
+    color: white;
+}
+
+/* TOP BAR */
+.program-top {
+    height: 6px;
+    background: linear-gradient(90deg, #f59f00, #ffd43b);
+}
+
+.program-top.blue {
+    background: linear-gradient(90deg, #0b7285, #4dabf7);
+}
+
+/* BODY */
+.program-body i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #64ffda;
+}
+
+.program-body p {
+    color: #ccd6f6;
+}
+
+.program-body h3 {
+    margin-bottom: 10px;
+}
+
+.program-body p {
+    color: #555;
+}
+
+/* BUTTON */
+.btn-card {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #64ffda, #0dcaf0);
+    color: #0a192f;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.btn-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* HOVER EFFECT */
+.program-card.unique:hover {
+    transform: translateY(-12px) scale(1.03);
+}
+
+/* TITLE STYLE */
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #64ffda;
+}
+
+/* FOOTER */
+footer {
+    background: #0b7285;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+/* ANIMATIONS */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    animation: floatUp 1.2s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="ha.png.jpg" alt="RHMC Logo" class="logo-img">
+            <span class="logo-text">Rosemont Hills Montessori College</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-overlay">
+        <div class="hero-content reveal">
+            <h3>New Offering for SY 2026 - 2027</h3>
+            <h1>Senior High School <br><span>Tech Pro Track</span></h1>
+            <p>Charting Your Future. Anchored in Excellence.</p>
+            <a href="#programs" class="btn">Explore Maritime Pathways</a>
+        </div>
+    </div>
+
+    <div class="wave"></div>
+</section>
+
+<section class="programs" id="programs">
+    <h2 class="section-title reveal">Maritime Career Pathways</h2>
+
+    <div class="program-container">
+
+        <div class="program-card unique reveal">
+            <div class="program-top"></div>
+            <div class="program-body">
+                <i class="fas fa-anchor"></i>
+                <h3>Marine Engineering</h3>
+                <p>Support Level (MESL)</p>
+                <a href="#" class="btn-card">Explore Program</a>
+            </div>
+        </div>
+
+        <div class="program-card unique reveal">
+            <div class="program-top blue"></div>
+            <div class="program-body">
+                <i class="fas fa-ship"></i>
+                <h3>Marine Transportation</h3>
+                <p>Support Level</p>
+                <a href="#" class="btn-card">Explore Program</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-content reveal">
+        <p>
+            <i class="fas fa-phone"></i> 
+            (63-32) 517 - 3278 / (63-32) 407 - 1403 / (63-32) 868 - 7318
+        </p>
+
+        <p>
+            <i class="fas fa-globe"></i> 
+            <a href="https://rosemonthills.com/" target="_blank" class="footer-link">
+                Visit Our Website
+            </a>
+        </p>
+
+        <p>
+            <i class="fab fa-facebook"></i> 
+            <a href="https://www.facebook.com/rosemonthillsmontessori" target="_blank" class="footer-link">
+                Follow us on Facebook
+            </a>
+        </p>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 Rosemont Hills Montessori College
+    </div>
+</footer>
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+        }
+    });
+});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
